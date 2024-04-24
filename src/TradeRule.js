@@ -47,7 +47,8 @@ const DescriptDiv = styled.div`
     align-items: start;
     width: 935 px;
     padding-top: 50px;
-    padding-left: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
 `;
 
 

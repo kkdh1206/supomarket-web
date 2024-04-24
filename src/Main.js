@@ -9,16 +9,33 @@ import screen3 from './images/screen3.png';
 import google from './images/playstore.png'; 
 import apple from './images/applestore.png'; 
 import { NavLink } from 'react-router-dom';
+import MediaQuery from'react-responsive';
+
 
 function MainPage(){
     return(
         <DescriptDiv>
             
+            <MediaQuery minWidth = {1075}>
             <ImageDiv>
                 <StyledImage src={screen1}/>
                 <StyledImage src={screen2}/>
                 <StyledImage src={screen3}/>
             </ImageDiv>
+            </MediaQuery>
+
+            <MediaQuery maxWidth = {1075}>
+            <SlidingImageDiv>
+                <StyledImage src={screen1}/>
+                <StyledImage src={screen2}/>
+                <StyledImage src={screen3}/>
+
+            </SlidingImageDiv>
+                
+            
+            </MediaQuery>
+
+            
             
             <SubTitle>
                 앱 소개
@@ -118,11 +135,49 @@ function MainPage(){
             다운로드
             </SubTitle>
 
+            
+            <MediaQuery minWidth={501}>
             <ImageDiv>
-              <StyledImage src={google}/> 
-              {/* onClick 으로 주소 나오면 해당 링크로 이동시켜줘야함 */}
-              <StyledImage src={apple}/>
+            <a href='https://play.google.com/store/apps/details?id=com.supomarket.supo_market'>
+              <StyledImage src={google} /> 
+              </a>
+              
+              <a href='https://apps.apple.com/kr/app/supomarket/id6477733742?platform=iphone'>
+              <StyledImage src={apple} />
+              </a>
             </ImageDiv>
+            </MediaQuery>
+
+            <MediaQuery maxWidth={500}>
+            <SmallImageDiv>
+              <a href='https://play.google.com/store/apps/details?id=com.supomarket.supo_market'>
+              <StyledImage src={google}/> 
+              </a>
+              
+              <a href='https://apps.apple.com/kr/app/supomarket/id6477733742?platform=iphone'>
+              <StyledImage src={apple} />
+              </a>
+              
+            </SmallImageDiv>
+            </MediaQuery>
+
+            <Space/>
+            <Space/>
+
+            <SubTitle>
+            문의 연락처
+            </SubTitle>
+
+            <Content>
+              공식 이메일:  supomarket@naver.com
+            </Content>
+            <Content>
+              CEO       김도형   전화번호: 010-8515-4832    이메일:  kkdh1206@postech.ac.kr
+            </Content>
+            <Content>
+              수행비서  정태형   전화번호: 010-9578-9803   이메일:  taepovisid1@postech.ac.kr
+            </Content>
+
         </DescriptDiv>
     );
 }
@@ -134,6 +189,7 @@ const StyledNavLink = styled(NavLink)`
   `;
 
 const StyledImage = styled.img`
+  display: block;
   max-width: 100%; /* 이미지가 부모 컨테이너의 너비를 넘지 않도록 설정 */
   height: auto; /* 이미지 비율을 유지하도록 설정 */
 `;
@@ -145,8 +201,30 @@ const ImageDiv = styled.div`
     align-items: center;
     gap: 30px;
     padding: 30px;
-    width: 300px;
-`
+    width: 500px;
+`;
+
+const SmallImageDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    gap: 30px;
+    padding: 30px;
+    width: 150px;
+`;
+
+const SlidingImageDiv = styled.div`
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    width: 50vw;
+`;
 
 const Space = styled.div`
     height: 30px;
@@ -157,9 +235,9 @@ const DescriptDiv = styled.div`
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    width: 935 px;
     padding-top: 50px;
-    padding-left: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
 `;
 
 
@@ -189,6 +267,7 @@ const Content = styled.p`
   font-family: 'SB-L', sans-serif;
   padding-left: 10px;
   text-align: left;
+  white-space: pre-wrap; /* 공백 유지 */
 
   @font-face {
     font-family: 'SB-L';
